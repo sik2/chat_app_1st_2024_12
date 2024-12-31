@@ -46,4 +46,9 @@ public class ChatController {
 
         return new RsData("200", "메세지 가져오기 성공", new MessagesResponse(messages, chatMessages.size()));
     }
+
+    @GetMapping("/room")
+    public String room () {
+        return "chat/room";
+    }
 }
