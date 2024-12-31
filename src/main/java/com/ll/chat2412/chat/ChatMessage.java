@@ -12,4 +12,11 @@ public class ChatMessage {
     private String authorName;
     private String content;
     private LocalDateTime createDate;
+
+    public ChatMessage(long id, String authorName, String content) {
+        this.id = id;
+        this.authorName = authorName;
+        this.content = content;
+        this.createDate = LocalDateTime.now();
+    }
 }
