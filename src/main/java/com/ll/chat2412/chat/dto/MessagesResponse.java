@@ -8,6 +8,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public class WriteMessageResponse {
-    private List<ChatMessage> chatMessages;
+public class MessagesResponse {
+    List<ChatMessage> chatMessages;
 }
