@@ -32,20 +32,17 @@ public class ChatController {
     public RsData<MessagesResponse> messages(MessagesRequest messagesRequest) {
         List<ChatMessage> messages = chatMessages;
         if (messagesRequest.fromId() != null) {
-            int index = -1;
-            for (int i = 0; i < messages.size(); i++) {
-                if (messages.get(i).getId() == messagesRequest.fromId()) {
-                    index = i;
-                    break;
-                }
-            }
+
+            int index = IntStream.range(0, messages.size())
+                    .filter(i -> chatMessages.get(i).getId() == messagesRequest.fromId())
+                    .findFirst()
+                    .orElse(-1);
 
             if (index != -1) {
                 messages = messages.subList(index + 1, messages.size());
             }
 
         }
-
 
         return new RsData("200", "메세지 가져오기 성공", new MessagesResponse(messages, chatMessages.size()));
     }
